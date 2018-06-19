@@ -1,9 +1,19 @@
 # taucauto
 Python script that automatically extracts the bandgap of a material by the Tauc method [1].
-Tauc plots are also generated.
+Tauc plots are also generated. A windows '.exe' standalone is also provided. 
 
-## Function
+### Function
 Transforms spectrum '.txt' files within a directory into Tauc plots, which are generated as '.jpg' files. From these plots, the bang gap is extrapolated as outlined in ref [1].
+
+### Using taucauto
+
+1. Python on command line
+Within the directory containing spectrum files, do:
+```python
+python taucauto.py
+```
+Which will return '.jpg' files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file *output.dat* will be created containing a list of spectrum files and their corresponding computed band gaps. 
+
 
 ### Tauc plots
 A Tauc plot [1] is used to determine the optical bandgap, or Tauc gap, in semiconductors. The Tauc gap is often used to characterize practical optical properties of amorphous materials.
@@ -20,5 +30,8 @@ Here, direct allowed transitions are assumed (i.e. r = 1/2).
 The resulting plot has a distinct linear regime which denotes the onset of absorption. Thus, extrapolating this linear region to the abscissa yields the energy of the optical band gap of the material.
 
 [1] Tauc, J. (1968). Materials Research Bulletin. 3: 37–46. doi:10.1016/0025-5408(68)90023-8
+
+### Files
+
 
 
