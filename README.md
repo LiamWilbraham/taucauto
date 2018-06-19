@@ -3,7 +3,7 @@ Python script that automatically extracts the bandgap of a material by the Tauc 
 Tauc plots are also generated. A windows '.exe' standalone is also provided. 
 
 ### Function
-Transforms spectrum '.txt' files within a directory into Tauc plots, which are generated as '.jpg' files. From these plots, the bang gap is extrapolated as outlined in ref [1].
+Transforms spectrum '.txt' files within a directory into Tauc plots, which are generated as '.jpg' files. From these plots, the band gap is extrapolated as outlined in ref [1].
 
 ### Using taucauto
 
