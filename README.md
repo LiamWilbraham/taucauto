@@ -32,6 +32,8 @@ Which will return '.jpg' files containing the Tauc plots, annotated with the ext
 The Windows executable has been created using pyinstaller (https://www.pyinstaller.org/).
 To use, place `taucauto.exe` in a folder containing the spectrum files and double click. 
 
+**Currently trying to reduce the number of dependencies so that this can be uploaded to GitHub (file size is too large). For the time being, if you would like to use the Windows version, you can contact me. **
+
 ### Tauc plots
 A Tauc plot [1] is used to determine the optical bandgap, or Tauc gap, in semiconductors. The Tauc gap is often used to characterize practical optical properties of amorphous materials.
 
