@@ -15,6 +15,8 @@ Jan Tauc showed that the optical absorption spectrum of amorphous germanium rese
 * r = 2 for indirect allowed transitions
 * r = 3 for indirect forbidden transitions
 
+Here, direct allowed transitions are assumed (i.e. r = 1/2). 
+
 The resulting plot has a distinct linear regime which denotes the onset of absorption. Thus, extrapolating this linear region to the abscissa yields the energy of the optical band gap of the material.
 
 [1] Tauc, J. (1968). Materials Research Bulletin. 3: 37–46. doi:10.1016/0025-5408(68)90023-8
