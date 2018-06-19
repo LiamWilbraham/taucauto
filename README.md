@@ -7,6 +7,18 @@ Transforms spectrum '.txt' files within a directory into Tauc plots, which are g
 
 ### Using taucauto
 
+`taucauto` should be used within a directory containing spectrum files. These files should have the following format:
+```python
+"example1 - RawData"
+"Wavelength nm." "Abs."
+X1 Y1
+X2 Y2
+ .  .
+ .  .
+ .  .
+```
+where Xi and Yi are the recorded wavelengths and absorption coefficients, respectively. 
+
 1. Python on command line
 Within the directory containing spectrum files, do:
 ```python
@@ -14,6 +26,9 @@ python taucauto.py
 ```
 Which will return '.jpg' files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file *output.dat* will be created containing a list of spectrum files and their corresponding computed band gaps. 
 
+2. Using the Windows executable
+The Windows executable has been created using pyinstaller (https://www.pyinstaller.org/).
+To use, place `taucauto.exe` in a folder containing the spectrum files and double click. 
 
 ### Tauc plots
 A Tauc plot [1] is used to determine the optical bandgap, or Tauc gap, in semiconductors. The Tauc gap is often used to characterize practical optical properties of amorphous materials.
