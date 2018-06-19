@@ -19,7 +19,7 @@ X2 Y2
 ```
 where Xi and Yi are the recorded wavelengths and absorption coefficients, respectively. 
 
-1. Python on command line
+**1. Python on command line**
 
 Within the directory containing spectrum files, do:
 ```python
@@ -27,7 +27,7 @@ python taucauto.py
 ```
 Which will return '.jpg' files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file *output.dat* will be created containing a list of spectrum files and their corresponding computed band gaps. 
 
-2. Using the Windows executable
+**2. Using the Windows executable**
 
 The Windows executable has been created using pyinstaller (https://www.pyinstaller.org/).
 To use, place `taucauto.exe` in a folder containing the spectrum files and double click. 
@@ -47,8 +47,6 @@ Here, direct allowed transitions are assumed (i.e. r = 1/2).
 The resulting plot has a distinct linear regime which denotes the onset of absorption. Thus, extrapolating this linear region to the abscissa yields the energy of the optical band gap of the material.
 
 [1] Tauc, J. (1968). Materials Research Bulletin. 3: 37–46. doi:10.1016/0025-5408(68)90023-8
-
-### Files
 
 
 
