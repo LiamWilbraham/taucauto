@@ -25,7 +25,7 @@ Within the directory containing spectrum files, do:
 ```python
 python taucauto.py <r> <imagefile> <dpi>
 ```
-Where `r` is the Tauch plot exponent, `imgfile` is the output format (e.g. jpg) for Tauc plot images and `dpi` is the image quality (e.g. 300). This will return image files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file `output.dat` will be created containing a list of spectrum files and their corresponding computed band gaps. 
+Where `r` is the Tauc plot exponent, `imgfile` is the output format (e.g. jpg) for Tauc plot images and `dpi` is the image quality (e.g. 300). This will return image files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file `output.dat` will be created containing a list of spectrum files and their corresponding computed band gaps. 
 
 **2. Using the Windows executable**
 
