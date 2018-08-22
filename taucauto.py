@@ -2,21 +2,33 @@ import matplotlib
 matplotlib.use('TkAgg')
 import numpy as np
 import os
+import sys
 from scipy.interpolate import interp1d
 from scipy.signal import savgol_filter
 import matplotlib.pyplot as plt
 
-# Directory containing spectra to be analysed 
-dirname = '.'
+# arguments for image file extension and r value
+try:
+    r = float(sys.argv[1])
+    imgfile = sys.argv[2]
+    dpi = int(sys.argv[3])
+except Exception as e:
+    print('input format: taucauto.py r imgfile dpi')
+    print('r : tauc plot exponent value')
+    print('imgfile : image file type/extension')
+    print('dpi : image quality (dpi)')
+    exit()
 
+# Directory containing spectra to be analysed
+dirname = '.'
 
 # Function returning excitation energy
 def GetHv(x):
     return (6.626070e-34*299792458)/(x*1e-9)*6.242e18
 
 # Function returning Tauc plot y-axis (direct, allowed transitions)
-def GetAlpha(hv,f):
-    return (hv*f)
+def GetAlpha(hv,f,r):
+    return (hv*f)**(1/r)
 
 gaps = []
 for spectrum_file in os.listdir(dirname):
@@ -25,11 +37,11 @@ for spectrum_file in os.listdir(dirname):
             spectrum = np.array([line.split() for line in input_file][2:]).astype(np.float)
 
         # Calculate Tauc plots
-        tauc_spectrum = np.zeros((len(spectrum),2))    
-        tauc_spectrum[:,0] = GetHv(spectrum[:,0])  
-        tauc_spectrum[:,1] = GetAlpha(GetHv(spectrum[:,0]), spectrum[:,1])
+        tauc_spectrum = np.zeros((len(spectrum),2))
+        tauc_spectrum[:,0] = GetHv(spectrum[:,0])
+        tauc_spectrum[:,1] = GetAlpha(GetHv(spectrum[:,0]), spectrum[:,1], r)
 
-        # Transform Tauc plot to interpolation function 
+        # Transform Tauc plot to interpolation function
         y = interp1d(tauc_spectrum[:,0], savgol_filter(tauc_spectrum[:,1], 51, 3))
         x = np.linspace(tauc_spectrum[0,0], tauc_spectrum[-1:,0], 5000)
 
@@ -45,7 +57,7 @@ for spectrum_file in os.listdir(dirname):
 
         # Find point in Tauc plot where 2nd derivative == 0 and gradient is at a maximum
         gradmax = 0.
-        for i in range(2, len(x[:-2])): 
+        for i in range(2, len(x[:-2])):
             grad = y_1d(x[:-2])[i]
             if grad > gradmax:
                 gradmax = grad
@@ -69,14 +81,13 @@ for spectrum_file in os.listdir(dirname):
 
         plt.plot(tauc_spectrum[:,0], tauc_spectrum[:,1],'-',
                  [(0-c)/m, (0.7*np.amax(tauc_spectrum[:,1])-c)/m], [0, 0.7*np.amax(tauc_spectrum[:,1])], '--',
-                 tauc_spectrum[:,0], np.zeros(len(tauc_spectrum)), '-', 
+                 tauc_spectrum[:,0], np.zeros(len(tauc_spectrum)), '-',
                  x_cross, 0, 'o', )
 
-        plt.savefig(spectrum_file[:-4]+'.jpg')
+        plt.savefig(spectrum_file[:-4]+'.'+imgfile, dpi=dpi)
         plt.close()
 
 with open('output.dat', 'w') as computed_gaps:
     computed_gaps.write('filename\tgap (eV) \n')
     for item in gaps:
         computed_gaps.write('{}\t{}\n'.format(item[0], item[1]))
-
