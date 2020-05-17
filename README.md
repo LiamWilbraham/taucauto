@@ -18,21 +18,11 @@ X2 Y2
  .  .
 ```
 where Xi and Yi are the recorded wavelengths and absorption coefficients, respectively. 
-
-**1. Python on command line**
-
 Within the directory containing spectrum files, do:
 ```python
 python taucauto.py <r> <imagefile> <dpi>
 ```
 Where `r` is the Tauc plot exponent, `imgfile` is the output format (e.g. jpg) for Tauc plot images and `dpi` is the image quality (e.g. 300). This will return image files containing the Tauc plots, annotated with the extrapolation line used to obtain the band gap. If multiple spectrum files are present, this will be done for each of these and an output file `output.dat` will be created containing a list of spectrum files and their corresponding computed band gaps. 
-
-**2. Using the Windows executable**
-
-The Windows executable has been created using pyinstaller (https://www.pyinstaller.org/).
-To use, place `taucauto.exe` in a folder containing the spectrum files and double click. 
-
-**Currently trying to reduce the number of dependencies so that this can be uploaded to GitHub (file size is too large). For the time being, if you would like to use the Windows version, you can contact me.**
 
 ### Tauc plots
 A Tauc plot [1] is used to determine the optical bandgap, or Tauc gap, in semiconductors. The Tauc gap is often used to characterize practical optical properties of amorphous materials.
